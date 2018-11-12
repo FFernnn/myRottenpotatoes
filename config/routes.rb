@@ -1,6 +1,10 @@
 Myrottenpotatoes::Application.routes.draw do
   resources :articles
-  resources :movies
+  
+  resources :movies do
+    resources :reviews
+  end
+  
   post '/movies/search_tmdb'
   root :to => 'movies#welcome'
   get 'auth/:provider/callback' => 'sessions#create'
